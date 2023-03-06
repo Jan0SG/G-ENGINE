@@ -1,4 +1,4 @@
-﻿using System;
+﻿/*using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -30,7 +30,7 @@ namespace Graphic_Engine
             //canvas.Cylinder(); //This method will create the initial cylinder
             //canvas.Sphere(); //This method will create the initial sphere
             //canvas.SemiSphere(); //This method will create the initial semi-sphere
-            //canvas.Icosaedron
+            //canvas.Icosaedron();
             canvas.Cardioid();
         }
 
@@ -87,5 +87,76 @@ namespace Graphic_Engine
                 canvas.RotationZ();
             }
         }
+    }
+}*/
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace Graphic_Engine
+{
+    public partial class Form1 : Form
+    {
+
+        Canvas canvas;
+
+        int rotationCount = 0;
+
+        public Form1()
+        {
+            InitializeComponent();
+            canvas = new Canvas(PCT_CANVAS);
+            canvas.drawMidPoint(); //This will create the midpoint lines
+
+
+            //canvas.Cube(); //This method will create the initial cube
+            //canvas.Cone(); //This method will create the initial cone
+            //canvas.Cylinder(); //This method will create the initial cylinder
+            //canvas.Sphere(); //This method will create the initial sphere
+            //canvas.SemiSphere(); //This method will create the initial semi-sphere
+            canvas.Cardioid();//This method will create the initial cardioid
+
+            rotTimer.Enabled = true; // activar el temporizador al cargar el formulario
+        }
+
+        private void rotTimer_Tick(object sender, EventArgs e)
+        {
+            {
+                if (rotationCount < 90)
+                {
+                    canvas.RotationY();
+                }
+                else if (rotationCount < 180)
+                {
+                    canvas.RotationX();
+                }
+                else if (rotationCount < 270)
+                {
+                    canvas.RotationZ();
+                }
+                else
+                {
+                    canvas.RotationX();
+                    canvas.RotationY();
+                    canvas.RotationZ();
+                }
+
+                rotationCount++;
+
+                if (rotationCount == 360)
+                {
+                    rotationCount = 0;
+                }
+            }
+
+        }
+
+
     }
 }

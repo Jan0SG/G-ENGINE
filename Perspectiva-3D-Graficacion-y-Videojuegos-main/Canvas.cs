@@ -27,7 +27,7 @@ namespace Graphic_Engine
         PointF3D[] normal, line1, line2;
         Double[] l;
         Cone cone1;
-        ICOSAEDRO Icosa;
+        
         Cardioid cardio;
 
         public Canvas(PictureBox pct)
@@ -56,8 +56,8 @@ namespace Graphic_Engine
             c = new Point(hWidth, hHeight - hHeight);
             d = new Point(hWidth, hHeight + hHeight);
 
-            canvas.DrawLine(a, b, Color.Gray);
-            canvas.DrawLine(c, d, Color.Gray);
+            canvas.DrawLine(a, b, Color.ForestGreen);
+            canvas.DrawLine(c, d, Color.ForestGreen);
 
             PCT_CANVAS.Invalidate();
         }
@@ -83,30 +83,10 @@ namespace Graphic_Engine
             Render();
         }
 
-            public void Icosaedron() //This method generates a cone
-            {
-                Icosa = new ICOSAEDRO(2, ref mesh);
-                line1 = new PointF3D[mesh.Figures.Count];
-                line2 = new PointF3D[mesh.Figures.Count];
-                normal = new PointF3D[mesh.Figures.Count];
-                l = new double[mesh.Figures.Count];
-                camera = new PointF3D(0, 0, 3);
 
-                for (int i = 0; i < mesh.Figures.Count; i++)
-                {
-                    line1[i] = new PointF3D(mesh.Figures[i].Pts[1].X - mesh.Figures[i].Pts[0].X, mesh.Figures[i].Pts[1].Y - mesh.Figures[i].Pts[0].Y, mesh.Figures[i].Pts[1].Z - mesh.Figures[i].Pts[0].Z);
-                    line2[i] = new PointF3D(mesh.Figures[i].Pts[2].X - mesh.Figures[i].Pts[0].X, mesh.Figures[i].Pts[2].Y - mesh.Figures[i].Pts[0].Y, mesh.Figures[i].Pts[2].Z - mesh.Figures[i].Pts[0].Z);
-                    normal[i] = new PointF3D(line1[i].Y * line2[i].Z - line1[i].Z * line2[i].Y, line1[i].Z * line2[i].X - line1[i].X * line2[i].Z, line1[i].X * line2[i].Y - line1[i].Y * line2[i].X);
-                    l[i] = Math.Sqrt((normal[i].X * normal[i].X) + (normal[i].Y * normal[i].Y) + (normal[i].Z * normal[i].Z));
-                    normal[i].X /= (float)l[i]; normal[i].Y /= (float)l[i]; normal[i].Z /= (float)l[i];
-                }
-
-                Render();
-            }
-
-        public void Cardioid() //This method generates a cone
+        public void Cardioid() 
         {
-            cardio = new Cardioid(1, 1, 100, ref mesh);
+            cardio = new Cardioid(0.5, 0.5, 100, ref mesh);
             line1 = new PointF3D[mesh.Figures.Count];
             line2 = new PointF3D[mesh.Figures.Count];
             normal = new PointF3D[mesh.Figures.Count];
@@ -322,11 +302,11 @@ namespace Graphic_Engine
 
             for (int i = 0; i < mesh.Figures.Count; i++)
             {
-                if (normal[i].X * (mesh.Figures[i].Pts[0].X - camera.X) + normal[i].Y * (mesh.Figures[i].Pts[0].Y - camera.Y) + normal[i].Z * (mesh.Figures[i].Pts[0].Z - camera.Z) < 0)
-                {
+                //if (normal[i].X * (mesh.Figures[i].Pts[0].X - camera.X) + normal[i].Y * (mesh.Figures[i].Pts[0].Y - camera.Y) + normal[i].Z * (mesh.Figures[i].Pts[0].Z - camera.Z) < 0)
+                //{
                     //canvas.DrawFilledTriangle(mesh.Figures[i].Pts2D[0], mesh.Figures[i].Pts2D[1], mesh.Figures[i].Pts2D[2], Color.FromArgb(32, 194, 14)); //It possible to use this method rather than "DrawWireframeTraingle" in order to draw the figures, but with the difference that the figures have a filling color.
-                    canvas.DrawWireFrameTriangle(mesh.Figures[i].Pts2D[0], mesh.Figures[i].Pts2D[1], mesh.Figures[i].Pts2D[2], Color.FromArgb(32, 194, 14));
-                }
+                    canvas.DrawWireFrameTriangle(mesh.Figures[i].Pts2D[0], mesh.Figures[i].Pts2D[1], mesh.Figures[i].Pts2D[2], Color.FromArgb(20, 139, 184));
+                //}
             }
             PCT_CANVAS.Invalidate();
         }

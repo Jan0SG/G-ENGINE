@@ -49,7 +49,6 @@
   <ItemGroup>
     <Compile Include="Canvas.cs" />
     <Compile Include="Cardioid.cs" />
-    <Compile Include="ICOSAEDRO.cs" />
     <Compile Include="Cylinder.cs" />
     <Compile Include="Cone.cs" />
     <Compile Include="HalfSphere.cs" />

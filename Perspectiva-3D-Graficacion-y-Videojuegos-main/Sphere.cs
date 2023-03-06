@@ -7,7 +7,71 @@ using System.Threading.Tasks;
 
 namespace Graphic_Engine
 {
-    public class Sphere //This class is in charge of designing a sphere through the use of an icosahedron as a basis (icosahedral geodesic sphere)
+    public class Sphere
+    {
+        public PointF3D Centro { get; private set; }
+        public float Radio { get; private set; }
+        public Mesh Malla { get; private set; }
+
+
+        public Sphere(float radio, int numDivisiones, ref Mesh mesh)
+        {
+            //Numdiv debe ser 20
+            //Centro = centro;
+            //PointF3D centro = new PointF3D(0, 0, 0);
+
+            Radio = radio;
+
+            //Malla = new Mesh();
+            var puntos = new List<PointF3D>();
+            var divisiones = numDivisiones *2;
+            var deltaAngulo = 2 * Math.PI / numDivisiones;
+
+
+
+
+            for (int i = 0; i < divisiones; i++)
+            {
+                var latitud = Math.PI * (i / (float)numDivisiones);
+                var z = Radio * Math.Sin(latitud);
+                var radioEnPlano = Radio * Math.Cos(latitud);
+
+                for (int j = 0; j < numDivisiones; j++)
+                {
+                    var angulo = j * deltaAngulo;
+                    var x = radioEnPlano * Math.Cos(angulo);
+                    var y = radioEnPlano * Math.Sin(angulo);
+                    puntos.Add(new PointF3D((float)x, (float)y, (float)z));
+                }
+            }
+
+            for (int i = 0; i < numDivisiones; i++)
+            {
+                for (int j = 0; j < numDivisiones; j++)
+                {
+                    int a = i * divisiones + j;
+                    int b = i * divisiones + j + 1;
+                    int c = (i + 1) * divisiones + j + 1;
+                    int d = (i + 1) * divisiones + j;
+                    var triangulo1 = new Triangle();
+                    triangulo1.Add(puntos[a]);
+                    triangulo1.Add(puntos[b]);
+                    triangulo1.Add(puntos[0]);
+                    mesh.Figures.Add(triangulo1);
+                    var triangulo2 = new Triangle();
+                    triangulo2.Add(puntos[0]);
+                    triangulo2.Add(puntos[1]);
+                    triangulo2.Add(puntos[a]);
+                    mesh.Figures.Add(triangulo2);
+
+
+
+                }
+            }
+        }
+    }
+    //------------------------------------------------------------------------
+    /*public class Sphere //This class is in charge of designing a sphere through the use of an icosahedron as a basis (icosahedral geodesic sphere)
     {
         public Sphere(float radius, int numSegments, ref Mesh mesh)
         {
@@ -63,5 +127,61 @@ namespace Graphic_Engine
                 }
             }
         }
-    }
+    }*/
+    //----------------------------------------
+    /*public class Sphere
+    {
+        public PointF3D Centro { get; private set; }
+        public float Radio { get; private set; }
+        public Mesh Malla { get; private set; }
+
+        public Sphere(float radio, int numDivisions, ref Mesh mesh)
+        {
+            Radio = radio;
+
+            var puntos = new List<PointF3D>();
+            var divisiones = numDivisions + 1;
+            var deltaAngulo = 2 * Math.PI / numDivisions;
+            var deltaLatitud = Math.PI / numDivisions;
+
+            for (int i = 0; i <= numDivisions; i++)
+            {
+                var latitud = -Math.PI / 2 + i * deltaLatitud;
+                var y = Radio * Math.Sin(latitud);
+
+                for (int j = 0; j <= numDivisions; j++)
+                {
+                    var angulo = j * deltaAngulo;
+                    var x = Radio * Math.Cos(latitud) * Math.Cos(angulo);
+                    var z = Radio * Math.Cos(latitud) * Math.Sin(angulo);
+
+                    puntos.Add(new PointF3D((float)x, (float)y, (float)z));
+                }
+            }
+
+            for (int i = 0; i < numDivisions; i++)
+            {
+                for (int j = 0; j < numDivisions; j++)
+                {
+                    int a = i * divisiones + j;
+                    int b = i * divisiones + j + 1;
+                    int c = (i + 1) * divisiones + j + 1;
+                    int d = (i + 1) * divisiones + j;
+
+                    var triangulo1 = new Triangle();
+                    triangulo1.Add(puntos[a]);
+                    triangulo1.Add(puntos[b]);
+                    triangulo1.Add(puntos[c]);
+                    mesh.Figures.Add(triangulo1);
+
+                    var triangulo2 = new Triangle();
+                    triangulo2.Add(puntos[a]);
+                    triangulo2.Add(puntos[c]);
+                    triangulo2.Add(puntos[d]);
+                    mesh.Figures.Add(triangulo2);
+                }
+            }
+        }
+    }*/
+
 }
