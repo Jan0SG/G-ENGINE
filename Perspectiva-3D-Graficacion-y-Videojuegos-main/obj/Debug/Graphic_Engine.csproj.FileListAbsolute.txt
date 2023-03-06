@@ -1,0 +1,11 @@
+C:\Users\erizo\Downloads\Perspectiva-3D-Graficacion-y-Videojuegos-main\bin\Debug\Graphic_Engine.exe.config
+C:\Users\erizo\Downloads\Perspectiva-3D-Graficacion-y-Videojuegos-main\bin\Debug\Graphic_Engine.exe
+C:\Users\erizo\Downloads\Perspectiva-3D-Graficacion-y-Videojuegos-main\bin\Debug\Graphic_Engine.pdb
+C:\Users\erizo\Downloads\Perspectiva-3D-Graficacion-y-Videojuegos-main\obj\Debug\Graphic_Engine.csproj.AssemblyReference.cache
+C:\Users\erizo\Downloads\Perspectiva-3D-Graficacion-y-Videojuegos-main\obj\Debug\Graphic_Engine.csproj.SuggestedBindingRedirects.cache
+C:\Users\erizo\Downloads\Perspectiva-3D-Graficacion-y-Videojuegos-main\obj\Debug\Graphic_Engine.Form1.resources
+C:\Users\erizo\Downloads\Perspectiva-3D-Graficacion-y-Videojuegos-main\obj\Debug\Graphic_Engine.Properties.Resources.resources
+C:\Users\erizo\Downloads\Perspectiva-3D-Graficacion-y-Videojuegos-main\obj\Debug\Graphic_Engine.csproj.GenerateResource.cache
+C:\Users\erizo\Downloads\Perspectiva-3D-Graficacion-y-Videojuegos-main\obj\Debug\Graphic_Engine.csproj.CoreCompileInputs.cache
+C:\Users\erizo\Downloads\Perspectiva-3D-Graficacion-y-Videojuegos-main\obj\Debug\Graphic_Engine.exe
+C:\Users\erizo\Downloads\Perspectiva-3D-Graficacion-y-Videojuegos-main\obj\Debug\Graphic_Engine.pdb
